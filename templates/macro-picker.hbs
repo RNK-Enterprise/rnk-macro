@@ -1,0 +1,32 @@
+<div class="rnk-macro-picker-inner">
+
+    {{!-- Header: subtitle + optional clear button --}}
+    <div class="rnk-macro-picker-header">
+        <p>{{localize "RNKMACRO.PickerSubtitle"}} <strong>{{actorName}}</strong></p>
+        {{#if hasMacro}}
+        <button type="button" class="rnk-macro-clear">
+            <i class="fas fa-times"></i> {{localize "RNKMACRO.ClearMacro"}}
+        </button>
+        {{/if}}
+    </div>
+
+    {{!-- Scrollable list of all available macros --}}
+    <div class="rnk-macro-list">
+        {{#if macros.length}}
+            {{#each macros}}
+            <div class="rnk-macro-row{{#if selected}} selected{{/if}}"
+                 data-macro-id="{{id}}"
+                 title="{{name}}">
+                <img src="{{img}}" alt="{{name}}" class="rnk-macro-img" />
+                <span class="rnk-macro-name">{{name}}</span>
+                {{#if selected}}
+                <i class="fas fa-check rnk-macro-check"></i>
+                {{/if}}
+            </div>
+            {{/each}}
+        {{else}}
+            <p class="rnk-macro-empty">{{localize "RNKMACRO.NoMacros"}}</p>
+        {{/if}}
+    </div>
+
+</div>

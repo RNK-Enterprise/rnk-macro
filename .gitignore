@@ -1,0 +1,13 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Releases
+*.zip
+
+# Editor
+.vscode/
+.idea/
+
+# Node (if any build step added later)
+node_modules/

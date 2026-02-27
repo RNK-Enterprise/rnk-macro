@@ -1,0 +1,196 @@
+/* =============================================================================
+   RNK™ Macro Button — Stylesheet
+   Module: rnk-macro  |  Author: RNK Enterprise - Odinn
+   License: RNK Proprietary
+   ============================================================================= */
+
+/* ── Sheet Header Button ─────────────────────────────────────────────────── */
+
+.rnk-macro-btn-wrap {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 8px;
+    flex-shrink: 0;
+}
+
+.rnk-macro-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 9px;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 4px;
+    color: #f0e6d3;
+    font-size: 12px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+    white-space: nowrap;
+    max-width: 170px;
+    overflow: hidden;
+    line-height: 1.4;
+}
+
+.rnk-macro-btn:hover {
+    background: rgba(70, 45, 8, 0.88);
+    border-color: rgba(255, 200, 90, 0.55);
+    color: #ffe8b0;
+}
+
+.rnk-macro-btn:active {
+    background: rgba(90, 55, 10, 0.95);
+    border-color: rgba(255, 210, 80, 0.8);
+}
+
+.rnk-macro-btn i {
+    flex-shrink: 0;
+    font-size: 11px;
+}
+
+.rnk-macro-btn-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 120px;
+}
+
+/* ── Macro Picker Dialog ─────────────────────────────────────────────────── */
+
+.rnk-macro-picker .window-content {
+    padding: 0;
+    overflow: hidden;
+}
+
+.rnk-macro-picker-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background: rgba(20, 15, 8, 0.92);
+}
+
+/* Header row */
+.rnk-macro-picker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 200, 80, 0.2);
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.rnk-macro-picker-header p {
+    margin: 0;
+    font-size: 13px;
+    color: #d4c5a9;
+}
+
+.rnk-macro-picker-header strong {
+    color: #ffe8b0;
+}
+
+/* Clear button */
+.rnk-macro-clear {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 9px;
+    font-size: 11px;
+    font-family: inherit;
+    cursor: pointer;
+    background: rgba(160, 25, 25, 0.5);
+    border: 1px solid rgba(255, 90, 90, 0.35);
+    border-radius: 3px;
+    color: #ffcccc;
+    transition: background 0.18s, border-color 0.18s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.rnk-macro-clear:hover {
+    background: rgba(200, 35, 35, 0.75);
+    border-color: rgba(255, 100, 100, 0.6);
+}
+
+/* Scrollable macro list */
+.rnk-macro-list {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding-right: 2px;
+}
+
+.rnk-macro-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.rnk-macro-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 200, 80, 0.3);
+    border-radius: 3px;
+}
+
+/* Individual macro row */
+.rnk-macro-row {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 6px 9px;
+    border-radius: 4px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid transparent;
+    transition: background 0.14s ease, border-color 0.14s ease;
+    user-select: none;
+}
+
+.rnk-macro-row:hover {
+    background: rgba(255, 200, 80, 0.1);
+    border-color: rgba(255, 200, 80, 0.28);
+}
+
+.rnk-macro-row.selected {
+    background: rgba(255, 200, 80, 0.16);
+    border-color: rgba(255, 200, 80, 0.48);
+}
+
+.rnk-macro-img {
+    width: 34px;
+    height: 34px;
+    border-radius: 3px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+}
+
+.rnk-macro-name {
+    flex: 1;
+    font-size: 13px;
+    color: #e8dcc8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rnk-macro-row.selected .rnk-macro-name {
+    color: #ffe8b0;
+}
+
+.rnk-macro-check {
+    color: #ffe080;
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+.rnk-macro-empty {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.35);
+    padding: 24px 16px;
+    font-style: italic;
+    font-size: 13px;
+}
