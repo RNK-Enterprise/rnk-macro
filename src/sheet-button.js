@@ -1,11 +1,11 @@
 /**
- * RNK Macro Button — Sheet Button Injection
+ * RNK™ Macro Button — Sheet Button Injection
  * @module rnk-macro/sheet-button
  * @description Handles DOM injection of the macro button into actor sheet headers
  *              and the execution of the assigned macro on click.
  * @author RNK Enterprise - Odinn
  * @license RNK Proprietary
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 const MODULE_ID = 'rnk-macro';
@@ -28,52 +28,38 @@ export function injectMacroButton(app, html) {
     const actor = _resolveActor(app);
     if (!actor) return;
 
-    // Normalize html to jQuery — mirrors rnk-header's exact pattern
-    if (!html.jquery) html = $(html);
+    const windowElement = _resolveWindowElement(app, html);
+    if (!windowElement) return;
 
-    // Resolve the full window element via app.element (v13) or climb from html (v12)
-    let $window;
-    if (app.element?.length) {
-        $window = app.element.jquery ? app.element : $(app.element);
-    } else {
-        $window = html.closest('.app.window-app, .window-app, .app, [role="dialog"]');
-    }
-
-    if (!$window.length) return;
-
-    // .window-header is inside the outer window wrapper
-    const $header = $window.find('.window-header');
-    if (!$header.length) return;
-
-    // Prevent duplicate injection
-    if ($header.find(`.${BTN_WRAP_CLASS}`).length) return;
+    const header = windowElement.querySelector('.window-header');
+    if (!header) return;
 
     const macroId = actor.getFlag(MODULE_ID, 'macroId') ?? null;
     const macro   = macroId ? game.macros.get(macroId) : null;
 
-    const $wrap = $(_buildButton(macro));
+    const wrap = _buildButton(macro);
+    const button = wrap.querySelector('.rnk-macro-btn');
 
-    // Left-click: execute
-    $wrap.find('.rnk-macro-btn').on('click', async (ev) => {
+    button?.addEventListener('click', async (ev) => {
         ev.preventDefault();
         ev.stopPropagation();
         await _executeMacro(actor);
     });
 
-    // Right-click: open picker
-    $wrap.find('.rnk-macro-btn').on('contextmenu', async (ev) => {
+    button?.addEventListener('contextmenu', async (ev) => {
         ev.preventDefault();
         ev.stopPropagation();
         const { MacroPickerApp } = await import('./macro-picker.js');
         new MacroPickerApp(actor).render(true);
     });
 
-    // v13: inject into .header-elements if present, else append to header (v12)
-    const $headerElements = $header.find('.header-elements');
-    if ($headerElements.length) {
-        $headerElements.prepend($wrap);
+    const target = header.querySelector('.header-elements') ?? header;
+    const existing = header.querySelector(`.${BTN_WRAP_CLASS}`);
+
+    if (existing) {
+        existing.replaceWith(wrap);
     } else {
-        $header.append($wrap);
+        target.prepend(wrap);
     }
 }
 
@@ -89,6 +75,31 @@ export function injectMacroButton(app, html) {
  */
 function _resolveActor(app) {
     return app?.actor ?? app?.document ?? null;
+}
+
+/**
+ * Resolve the outer application window element from Foundry's render arguments.
+ *
+ * @param {Application} app
+ * @param {jQuery|HTMLElement} html
+ * @returns {HTMLElement|null}
+ * @private
+ */
+function _resolveWindowElement(app, html) {
+    const appElement = app?.element;
+    if (appElement?.jquery) return appElement[0] ?? null;
+    if (appElement instanceof HTMLElement) return appElement;
+    if (Array.isArray(appElement) && appElement[0] instanceof HTMLElement) return appElement[0];
+
+    if (html?.jquery) {
+        return html.closest('.app.window-app, .window-app, .app, [role="dialog"]')?.[0] ?? null;
+    }
+
+    if (html instanceof HTMLElement) {
+        return html.closest('.app.window-app, .window-app, .app, [role="dialog"]');
+    }
+
+    return null;
 }
 
 /**
@@ -148,5 +159,11 @@ async function _executeMacro(actor) {
         return;
     }
 
-    await macro.execute({ actor });
+    if (!macro.canExecute) {
+        ui.notifications.error(game.i18n.localize('RNKMACRO.MacroCannotExecute'));
+        return;
+    }
+
+    const token = actor.getActiveTokens()[0] ?? null;
+    await macro.execute({ actor, token });
 }

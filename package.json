@@ -1,0 +1,10 @@
+{
+  "name": "rnk-macro",
+  "version": "1.0.1",
+  "private": true,
+  "description": "Free Foundry VTT module that adds an actor-sheet macro button with per-actor assignment.",
+  "license": "LicenseRef-RNK-Proprietary",
+  "scripts": {
+    "test": "node scripts/validate.mjs"
+  }
+}

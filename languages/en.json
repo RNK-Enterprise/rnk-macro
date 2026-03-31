@@ -1,8 +1,9 @@
 {
     "RNKMACRO.ButtonTitleAssigned": "Execute: {name} (Right-click to change)",
     "RNKMACRO.ButtonTitleEmpty": "No macro assigned — Right-click to assign",
-    "RNKMACRO.NoMacroAssigned": "No macro assigned to this character. Right-click the RNK button to assign one.",
+    "RNKMACRO.NoMacroAssigned": "No macro is assigned to this actor sheet. Right-click the RNK button to assign one.",
     "RNKMACRO.MacroNotFound": "The assigned macro no longer exists. Right-click the RNK button to reassign.",
+    "RNKMACRO.MacroCannotExecute": "You do not have permission to execute the assigned macro.",
     "RNKMACRO.MacroAssigned": "Macro assigned successfully.",
     "RNKMACRO.MacroCleared": "Macro assignment cleared.",
     "RNKMACRO.PickerTitle": "RNK™ Macro Button — Assign Macro",

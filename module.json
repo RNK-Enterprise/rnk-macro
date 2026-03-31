@@ -1,7 +1,7 @@
 {
     "id": "rnk-macro",
-    "title": "RNK Macro Button",
-    "description": "Injects a configurable macro execution button into every character sheet header. Left-click to execute the assigned macro, right-click to assign any macro from your world. A free module by RNK Enterprise.<br><br><a href='https://www.patreon.com/RagNaroks'><b>Support RNK Enterprise on Patreon</b></a>.",
+    "title": "RNK™ Macro Button",
+    "description": "Adds an actor-sheet macro button so players can assign and execute an actor-specific macro with left-click and right-click actions.",
     "authors": [
         {
             "name": "RNK Enterprise",
@@ -13,14 +13,14 @@
             "discord": "Odinn1982"
         }
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "compatibility": {
-        "minimum": 12,
+        "minimum": 13,
         "verified": 13
     },
     "url": "https://github.com/RNK-Enterprise/rnk-macro",
-    "manifest": "https://raw.githubusercontent.com/RNK-Enterprise/rnk-macro/main/module.json",
-    "download": "https://raw.githubusercontent.com/RNK-Enterprise/rnk-macro/main/module.zip",
+    "manifest": "https://github.com/RNK-Enterprise/rnk-macro/releases/latest/download/module.json",
+    "download": "https://github.com/RNK-Enterprise/rnk-macro/releases/latest/download/module.zip",
     "esmodules": ["src/main.js"],
     "styles": ["styles/rnk-macro.css"],
     "languages": [
@@ -30,6 +30,7 @@
             "path": "languages/en.json"
         }
     ],
+    "protected": false,
     "socket": false,
     "flags": {
         "rnk-macro": {

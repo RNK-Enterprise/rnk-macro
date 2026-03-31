@@ -5,17 +5,19 @@
  *              Left-click executes the assigned macro. Right-click opens the picker.
  * @author RNK Enterprise - Odinn
  * @license RNK Proprietary
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 import { injectMacroButton } from './sheet-button.js';
 
 const MODULE_ID = 'rnk-macro';
+const MODULE_TITLE = 'RNK™ Macro Button';
 
 // ─── Initialization ──────────────────────────────────────────────────────────
 
 Hooks.once('init', () => {
-    console.log(`${MODULE_ID} | RNK Macro Button v1.0.0 — Initializing`);
+    const version = game.modules.get(MODULE_ID)?.version ?? 'unknown';
+    console.log(`${MODULE_ID} | ${MODULE_TITLE} v${version} initializing`);
     _registerHooks();
 });
 
@@ -27,13 +29,23 @@ Hooks.once('init', () => {
  * @private
  */
 function _registerHooks() {
-    // v12 legacy actor sheets
     Hooks.on('renderActorSheet', (app, html, _data) => {
         injectMacroButton(app, html);
     });
 
-    // v13 ApplicationV2 actor sheets — this is the hook that fires in v13
-    Hooks.on('renderActorSheetV2', (app, html, _data) => {
+    Hooks.on('renderApplicationV2', (app, html, _data) => {
+        if (!_isActorSheet(app)) return;
         injectMacroButton(app, html);
     });
+}
+
+/**
+ * Determine whether the rendered application is backed by an Actor document.
+ *
+ * @param {Application} app
+ * @returns {boolean}
+ * @private
+ */
+function _isActorSheet(app) {
+    return app?.document?.documentName === 'Actor' || app?.actor?.documentName === 'Actor';
 }

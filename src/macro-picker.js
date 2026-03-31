@@ -5,7 +5,7 @@
  *              macro to their character sheet button. Accessible via right-click.
  * @author RNK Enterprise - Odinn
  * @license RNK Proprietary
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 const MODULE_ID = 'rnk-macro';
