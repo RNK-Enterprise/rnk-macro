@@ -57,8 +57,8 @@ if (moduleJson.protected !== false) {
   fail('Free module manifest must set protected to false');
 }
 
-if (moduleJson.compatibility?.minimum !== 13 || moduleJson.compatibility?.verified !== 13) {
-  fail('Compatibility must target Foundry v13');
+if (moduleJson.compatibility?.minimum !== 13 || moduleJson.compatibility?.verified !== 14) {
+  fail('Compatibility must target Foundry v13-14 (minimum 13, verified 14)');
 }
 
 if (moduleJson.manifest !== 'https://github.com/RNK-Enterprise/rnk-macro/releases/latest/download/module.json') {

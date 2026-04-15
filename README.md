@@ -1,9 +1,9 @@
 # RNK™ Macro Button
 
-**Version:** 1.0.1  
+**Version:** 1.0.2  
 **Module Type:** Free module  
 **License:** RNK Proprietary License  
-**Foundry Compatibility:** v13  
+**Foundry Compatibility:** v13-14 (minimum: 13, verified: 14)  
 
 ## Overview
 
@@ -46,7 +46,7 @@ https://github.com/RNK-Enterprise/rnk-macro/releases/latest/download/module.json
 
 ## Compatibility
 
-- Foundry Virtual Tabletop v13
+- Foundry Virtual Tabletop v13-14 (minimum: 13, verified: 14)
 - Actor sheets that render a standard Foundry window header
 - World macros the current user can execute
 

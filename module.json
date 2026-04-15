@@ -13,10 +13,10 @@
             "discord": "Odinn1982"
         }
     ],
-    "version": "1.0.1",
+    "version": "1.0.2",
     "compatibility": {
         "minimum": 13,
-        "verified": 13
+        "verified": 14
     },
     "url": "https://github.com/RNK-Enterprise/rnk-macro",
     "manifest": "https://github.com/RNK-Enterprise/rnk-macro/releases/latest/download/module.json",

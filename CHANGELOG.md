@@ -2,7 +2,13 @@
 
 ## Unreleased
 
-- No unreleased changes.
+## 1.0.2 - 2026-04-15
+
+### Release Alignment
+
+- Updated compatibility to Foundry VTT v13-14 (minimum: 13, verified: 14).
+- Adjusted validation to target the v14 verified compatibility path.
+- Prepared the new release artifact and removed stale zip packaging.
 
 ## 1.0.1 - 2026-03-31
 
